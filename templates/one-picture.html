@@ -1,0 +1,56 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .image-grid img {
+            width: 95%;
+            height: auto;
+        }
+        .logo {
+            width: 5rem;
+            height: 5rem;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: xx-large;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div>
+    <h1><a href="/"><img class="logo" src="{{ url_for('static', filename='kofc_r_emblem_rgb_rev.png') }}" width="20px" height="20px"> Main Page</a></h1>
+    <div class="image-grid">
+    <hr>
+        <div class="navigation">
+            {% if file_info['prev_file'] > '' %}
+                <a href="/pics/{{ file_info['prev_file'] }}">&leftarrow;</a>
+            {% else %}
+                <a href="/pics/{{ file_info['file'] }}">&leftarrow;</a>
+            {% endif %}
+            &nbsp;&nbsp;&dash;&dash;&dash;&dash;&nbsp;&nbsp;
+            {% if file_info['next_file'] > '' %}
+                <a href="/pics/{{ file_info['next_file'] }}">&rightarrow;</a>
+            {% else %}
+                <a href="/pics/{{ file_info['file'] }}">&rightarrow;</a>
+            {% endif %}
+        </div>
+        <hr>
+    <img src="{{ url_for('static', filename='pics/' + file_info['file'])}}" >
+        <h2>{{ text }}</h2>
+        <hr>
+    </div>
+</div>
+
+</body>
+</html>
