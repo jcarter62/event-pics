@@ -64,3 +64,26 @@ class Loader:
             if file['file'] == filename:
                 return file
         return None
+
+    def delete_file(self,filename):
+        for i, file in enumerate(self.files):
+            if file['file'] == filename:
+                fullpath = os.path.join(self.base_dir, filename)
+                try:
+                    os.remove(fullpath)
+                except Exception as e:
+                    print(f'Error deleting {fullpath}: {e}')
+                del self.files[i]
+                break
+        return
+
+    def new_file(self, filename, filedata):
+        # create a new file with the given filename
+        fullpath = os.path.join(self.base_dir, filename)
+        try:
+            with open(fullpath, 'w') as f:
+                f.write(filedata)
+        except Exception as e:
+            print(f'Error writing {fullpath}: {e}')
+        return
+
