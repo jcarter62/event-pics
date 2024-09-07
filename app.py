@@ -65,5 +65,5 @@ def add_text(file):
         orig_text = l.file_text.get(file_info['file'], '')
         return render_template('add-text.html', filename=file, orig_text=orig_text)
 
-if __name__ == '__main__':
-    serve(app, host='0.0.0.0', port=8080)
+# if __name__ == '__main__':
+#     serve(app, host='0.0.0.0', port=8080)
