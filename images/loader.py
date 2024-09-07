@@ -32,13 +32,12 @@ class Loader:
         # sort the file_list alphabetically
         file_list = sorted(file_list, key=lambda d: d['file'])
         # fill in the prev_file and next_file values
-        i = 0
-        while i < len(file_list):
+        for i in range(len(file_list)):
             prev_file = file_list[i - 1]['file'] if i > 0 else ''
             next_file = file_list[i + 1]['file'] if i < len(file_list) - 1 else ''
             file_list[i]['prev_file'] = prev_file
             file_list[i]['next_file'] = next_file
-            i += 1
+
         return file_list
 
     def load_text_files(self):
