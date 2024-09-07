@@ -1,6 +1,7 @@
 from flask import Flask, render_template, send_from_directory, send_file, redirect, request, url_for
 from images import Loader
 import os
+from waitress import serve # for production
 
 app = Flask(__name__)
 
@@ -65,4 +66,4 @@ def add_text(file):
         return render_template('add-text.html', filename=file, orig_text=orig_text)
 
 if __name__ == '__main__':
-    app.run()
+    serve(app, host='0.0.0.0', port=8080)
